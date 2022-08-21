@@ -1,18 +1,29 @@
 import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-  const counter = useSelector((state) => state.counter);
+  const state = useSelector((state) => {
+    console.log(state.counter);
+    return state;
+  });
   const dispatch = useDispatch();
   const piu = () => {
     dispatch({ type: "piu" });
   };
-  const meno = () => {};
+  const meno = () => {
+    dispatch({ type: "meno" });
+  };
+
+  const amount = () => {
+    dispatch({ type: "amount", payload: 1 });
+  };
+
   return (
     <div>
       <h3>Counter App</h3>
-      <h4>{counter}</h4>
+      <h4>{state.counter}</h4>
       <button onClick={piu}>+</button>
       <button onClick={meno}>-</button>
+      <button onClick={amount}>+3</button>
     </div>
   );
 }
