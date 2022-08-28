@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const reducerFn = (state = { counter: 0 }, action) => {
   console.log(action);
