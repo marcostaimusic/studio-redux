@@ -1,24 +1,16 @@
-// const {
-//   configureStore,
-//   bindActionCreators,
-//   combineReducers,
-//   applyMiddleware,
-// } = require("@reduxjs/toolkit");
-
 const {
-  createStore,
+  configureStore,
   bindActionCreators,
   combineReducers,
-  applyMiddleware,
-} = require("redux");
-
-const reduxLogger = require("redux-logger");
-const logger = reduxLogger.createLogger();
+} = require("@reduxjs/toolkit");
 
 const CAKE_ORDERED = "CAKE_ORDERED";
 const CAKE_RESTOCKED = "CAKE_RESTOCKED";
 const ICECREAM_ORDERED = "ICECREAM_ORDERED";
 const ICECREAM_RESTOCKED = "ICECREAM_RESTOCKED";
+
+const reduxLogger = require("redux-logger");
+const logger = reduxLogger.createLogger();
 
 const orderCake = () => {
   return {
@@ -129,8 +121,10 @@ const rootReducer = combineReducers({
   icecream: iceCreamReducer,
 });
 
-const store = createStore(rootReducer, applyMiddleware(logger));
-// console.log(store.getState().cake);
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: [logger],
+});
 
 const unsubscribe = store.subscribe(() => {});
 
