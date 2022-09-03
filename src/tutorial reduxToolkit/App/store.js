@@ -7,11 +7,11 @@ const reduxLogger = require('redux-logger');
 const logger = reduxLogger.createLogger()
 
 const store = configureStore({
-    reducer: {
-        cake: cakeReducer,
-        icecream: icecreamReducer
-    },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
+	reducer: {
+		cake: cakeReducer,
+		icecream: icecreamReducer
+	},
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 })
 
 
